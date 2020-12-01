@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>javasceipt Calc</title>
+  <style>
+    button {
+      width: 50px;
+      height: 50px;
+    }
+    
+  </style>
+  <script>
+    function update(_v)
+    {
+      document.querySelector('input').value = _v;
+    }
+
+    function append(_v)
+    {
+      document.querySelector('input').value += _v;
+    }
+
+    function calc()
+    {
+      const v = document.querySelector('input').value;
+      try {
+        const f = new Function('return ' + v);
+        update(f().toString());
+      } catch(_error) {
+        update(_error);
+      }
+    }
+  </script>
+</head>
+<body>
+  <input readonly/><br>
+  <button onclick="append('1')">1</button>
+  <button onclick="append('2')">2</button>
+  <button onclick="append('3')">3</button><br>
+  <button onclick="append('4')">4</button>
+  <button onclick="append('5')">5</button>
+  <button onclick="append('6')">6</button><br>
+  <button onclick="append('7')">7</button>
+  <button onclick="append('8')">8</button>
+  <button onclick="append('9')">9</button><br>
+  <button onclick="append('.')">.</button>
+  <button onclick="append('+')">+</button>
+  <button onclick="append('-')">-</button><br>
+  <button onclick="append('*')">*</button>
+  <button onclick="append('/')">/</button>
+  <button onclick="append('**')">^</button><br>
+  <button onclick="append('**0.5')">√</button>
+
+  <button onclick="calc()" >=</button>
+
+  <button onclick="update('')">CLR</button>
+</body>
+</html>
